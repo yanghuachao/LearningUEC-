@@ -15,7 +15,18 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	MyBlueprintFunction();
 	
+}
+
+void APlayerCharacter::CallableFunction()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Callable"));
+}
+
+bool APlayerCharacter::CallFunction()
+{
+	return false;
 }
 
 // Called every frame

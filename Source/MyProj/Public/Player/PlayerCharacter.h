@@ -18,6 +18,22 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	//UFUNCTION  Test
+	UFUNCTION(BlueprintCallable)
+	void CallableFunction();
+	UFUNCTION(BlueprintPure)
+	bool CallFunction();
+
+	//BlueprintImplementEvent;
+	UFUNCTION(BlueprintImplementableEvent)
+	void MyBlueprintFunction();
+
+
+private:
+	//UPROPERTY Test
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess="true"))
+	float testlen;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
