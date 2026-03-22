@@ -1,0 +1,16 @@
+# Visual Studio 缓存和配置文件
+.vs/
+*.sln
+*.suo
+
+# Unreal Engine 自动生成的文件夹
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# 忽略按需生成的项目文件
+*.workspace
+*.xcworkspace
+*.xcodeproj/
