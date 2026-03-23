@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class MYPROJ_API APlayerCharacter : public ACharacter
 {
@@ -28,6 +31,12 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void MyBlueprintFunction();
 
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess="ture"))
+	TObjectPtr<USpringArmComponent> CameraBoom;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "ture"))
+	TObjectPtr<UCameraComponent> PlayerCamera;
 
 private:
 	//UPROPERTY Test
