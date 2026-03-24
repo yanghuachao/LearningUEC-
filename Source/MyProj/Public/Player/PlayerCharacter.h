@@ -9,6 +9,10 @@
 class USpringArmComponent;
 class UCameraComponent;
 
+class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
+
 UCLASS()
 class MYPROJ_API APlayerCharacter : public ACharacter
 {
@@ -31,6 +35,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void MyBlueprintFunction();
 
+	void Move(const FInputActionValue& value);
+	void Look(const FInputActionValue& value);
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess="ture"))
 	TObjectPtr<USpringArmComponent> CameraBoom;
@@ -38,10 +45,19 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "ture"))
 	TObjectPtr<UCameraComponent> PlayerCamera;
 
-private:
-	//UPROPERTY Test
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess="true"))
 	float testlen;
+
+	//Input
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputMappingContext> DefaultMapping;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputAction> MoveAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputAction> LookAction;
+
 
 public:	
 	// Called every frame
