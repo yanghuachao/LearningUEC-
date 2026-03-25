@@ -21,6 +21,10 @@ class MYPROJ_API APlayerCharacter : public ACharacter
 public:
 	APlayerCharacter();
 
+	UFUNCTION(BlueprintCallable, Category = "Action")
+	virtual void Attack();
+
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,9 +42,12 @@ protected:
 	void Move(const FInputActionValue& value);
 	void Look(const FInputActionValue& value);
 
-private:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess="ture"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "ture"))
 	TObjectPtr<USpringArmComponent> CameraBoom;
+
+
+private:
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "ture"))
 	TObjectPtr<UCameraComponent> PlayerCamera;
@@ -58,7 +65,8 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> LookAction;
 
-
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputAction> AttackAction;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

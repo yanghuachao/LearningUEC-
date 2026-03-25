@@ -3,6 +3,7 @@
 #include "Player/PlayerCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Components/SphereComponent.h"
 
 #include <EnhancedInputSubsystems.h>
 #include "EnhancedInputComponent.h"
@@ -25,6 +26,8 @@ APlayerCharacter::APlayerCharacter()
 	PlayerCamera = CreateDefaultSubobject<UCameraComponent>("Player Camera");
 	PlayerCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 
+	SphereComponent = CreateDefaultSubobject<USphereComponent>("Sphere Collision");
+	SphereComponent->SetSphereRadius(35.f);
 
 	//1.不要让角色随着控制器旋转
 	bUseControllerRotationPitch = false;
@@ -38,6 +41,11 @@ APlayerCharacter::APlayerCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 400.f, 0.f);
 
+}
+
+void APlayerCharacter::Attack()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Attack from character"));
 }
 
 // Called when the game starts or when spawned
@@ -106,6 +114,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	{
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Attack);
 	}
 }
 
