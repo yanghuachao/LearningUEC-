@@ -13,6 +13,8 @@ class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
 
+class USphereComponent;
+
 UCLASS()
 class MYPROJ_API APlayerCharacter : public ACharacter
 {
@@ -44,6 +46,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "ture"))
 	TObjectPtr<USpringArmComponent> CameraBoom;
+
+
+	//ÑÝÊ¾×éºÏ
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Sphere, meta = (AllowPrivateAccess = "ture"))
+	TObjectPtr<USphereComponent> SphereComponent;
 
 
 private:

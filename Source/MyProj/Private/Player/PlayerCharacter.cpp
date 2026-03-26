@@ -41,6 +41,8 @@ APlayerCharacter::APlayerCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 400.f, 0.f);
 
+	UE_LOG(LogTemp, Warning, TEXT("APlayerCharacter::APlayerCharacter"));
+
 }
 
 void APlayerCharacter::Attack()
@@ -51,6 +53,7 @@ void APlayerCharacter::Attack()
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
+	UE_LOG(LogTemp, Warning, TEXT("APlayerCharacter::BeginPlay"));
 	Super::BeginPlay();
 	//MyBlueprintFunction();
 	
